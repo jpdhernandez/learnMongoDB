@@ -1,4 +1,4 @@
-// This file is to test if User model can create and add a user to the db
+// This tests if User model can create and add a user to the db
 const assert = require("assert");
 const User = require("../src/user");
 

@@ -1,4 +1,4 @@
-// This file tests to see if it can read out from the database
+// This file tests reading out from the database
 const assert = require("assert");
 const User = require("../src/user");
 
