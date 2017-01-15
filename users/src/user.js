@@ -3,7 +3,14 @@ const Schema = mongoose.Schema;
 
 // This defines the structure/ blueprint of a user
 const UserSchema = new Schema({
-    name: String,
+    name: {
+        type: String,
+        validate: {
+            validator: (name) => name.length > 2,
+            message: "Name must be longer than 2 characters."
+        },
+        required: [true, "Name is required."]
+    },
     age: Number,
     postCount: Number,
     salary: Number
