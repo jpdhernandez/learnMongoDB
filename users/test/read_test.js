@@ -11,14 +11,12 @@ describe("Reading users from the database", () => {
             .then(() => done());
     });
 
-
     it("finds all users with name of Julian", (done) => {
         User.find({ name: "Julian" })
             .then((users) => {
                 assert(Julian._id.toString() === users[0]._id.toString()); // convert from objectId to string to compare
                 done();
             });
-
     });
 
     it("find a user with a particular id", (done) => {
