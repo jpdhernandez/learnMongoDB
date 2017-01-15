@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const PostSchema = require("./post_schema");
 const Schema = mongoose.Schema;
 
 // This defines the structure/ blueprint of a user
@@ -13,7 +14,8 @@ const UserSchema = new Schema({
     },
     age: Number,
     postCount: Number,
-    salary: Number
+    salary: Number,
+    posts: [PostSchema] // embedded subdocument
 });
 
 // This creates a Collection of data called User and make it follow UserSchema
