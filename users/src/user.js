@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 // This defines the structure/ blueprint of a user
 const UserSchema = new Schema({
     name: String,
-    age: Number
+    age: Number,
+    postCount: Number,
+    salary: Number
 });
 
 // This creates a Collection of data called User and make it follow UserSchema

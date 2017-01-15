@@ -5,7 +5,7 @@ describe("Updating records", () => {
     let Julian;
 
     beforeEach((done) => {
-        Julian = new User({ name: "Julian" });
+        Julian = new User({ name: "Julian", age: 65, postCount: 0, salary: 100000 });
         Julian.save()
             .then(() => done());
     });
@@ -38,5 +38,24 @@ describe("Updating records", () => {
 
     it("A model class can find a record with an Id and update", (done) => {
         assertAge(User.findByIdAndUpdate(Julian._id, { age: 23 }), 23, done);
+    });
+
+    // Use update operator to increment postcount
+    it("A user can have their postcount incremented by $inc", (done) => {
+        User.update({ name: "Julian" }, { $inc: { postCount: 1 } })
+            .then(() => User.findOne({ name: "Julian" }))
+            .then((user) => {
+                assert(user.postCount === 1);
+                done();
+            });
+    });
+
+    it("A user can have their salary increased by $mul", (done) => {
+        User.update({ name: "Julian" }, { $mul: { salary: 1.10 } })
+            .then(() => User.findOne({ name: "Julian" }))
+            .then((user) => {
+                assert(parseInt(user.salary) === 110000);
+                done();
+            });
     });
 });
