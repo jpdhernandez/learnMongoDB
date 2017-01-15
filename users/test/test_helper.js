@@ -16,8 +16,6 @@ before((done) => {
         });
 });
 
-
-
 // Drop records before creating connection (hook)
 beforeEach((done) => {
     mongoose.connection.collections.users.drop(() => {
