@@ -13,9 +13,15 @@ const UserSchema = new Schema({
         required: [true, "Name is required."]
     },
     age: Number,
-    postCount: Number,
     salary: Number,
-    posts: [PostSchema] // embedded subdocument
+    posts: [PostSchema], // embedded subdocument
+    likes: Number
+});
+
+// Set a virtual field and return length of posts field
+// fat arrow function would have returned the wrong scope
+UserSchema.virtual("postCount").get(function() {
+    return this.posts.length;
 });
 
 // This creates a Collection of data called User and make it follow UserSchema
