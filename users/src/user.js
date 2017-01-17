@@ -15,7 +15,11 @@ const UserSchema = new Schema({
     age: Number,
     salary: Number,
     posts: [PostSchema], // embedded subdocument
-    likes: Number
+    likes: Number,
+    blogPosts: [{
+        type: Schema.Types.ObjectId,
+        ref: "blogPost"
+    }]
 });
 
 // Set a virtual field and return length of posts field

@@ -7,13 +7,13 @@ describe("Virtual types", () => {
     it("postCount returns number of posts", (done) => {
         const Julian = new User({
             name: "Julian",
-            posts: [{ title: "PostTitle" }]
+            posts: [{ title: "PostTitle" }, { title: "AnotherPostTitle" }]
         });
 
         Julian.save()
             .then(() => User.findOne({ name: "Julian" }))
             .then((user) => {
-                assert(Julian.postCount === 1);
+                assert(Julian.postCount === 2);
                 done();
             });
     });

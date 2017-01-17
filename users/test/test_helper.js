@@ -18,7 +18,12 @@ before((done) => {
 
 // Drop records before creating connection (hook)
 beforeEach((done) => {
-    mongoose.connection.collections.users.drop(() => {
-        done(); // signals that you're done with drop then move on to next task
+    const { users, blogposts, comments } = mongoose.connection.collections;
+    users.drop(() => { // signals that you're done with drop then move on to next task
+        comments.drop(() => {
+            blogposts.drop(() => {
+                done();
+            });
+        });
     });
 });

@@ -6,7 +6,7 @@ describe("Subdocuments", (done) => {
     it("can add subdocuments", (done) => {
         const Julian = new User({ name: "Julian", posts: [{ title: "First Post" }] });
 
-        Julian.save() // updating can also be done by pushing to empty array and calling
+        Julian.save()
             .then(() => User.findOne({ name: "Julian" }))
             .then((user) => {
                 assert(user.posts[0].title === "First Post");
